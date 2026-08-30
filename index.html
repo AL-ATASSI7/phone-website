@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Phone Website — a modern, responsive mobile-first site showcasing fast, secure, and beautiful design.">
     <title>Phone Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <main id="main" class="container">
         <!-- Header -->
         <header class="header">
             <div class="logo">PhoneWeb</div>
-            <button class="menu-toggle" id="menuToggle">☰</button>
+            <button class="menu-toggle" id="menuToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">☰</button>
         </header>
 
         <!-- Navigation -->
-        <nav class="nav" id="navMenu">
+        <nav class="nav" id="navMenu" role="navigation" aria-label="Primary">
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
@@ -68,9 +70,17 @@
         <section id="contact" class="contact">
             <h2>Get in Touch</h2>
             <form class="contact-form" id="contactForm">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="4" required></textarea>
+                <label for="nameInput" class="sr-only">Your Name</label>
+                <input id="nameInput" name="name" type="text" placeholder="Your Name" required>
+
+                <label for="emailInput" class="sr-only">Your Email</label>
+                <input id="emailInput" name="email" type="email" placeholder="Your Email" required>
+
+                <label for="messageInput" class="sr-only">Your Message</label>
+                <textarea id="messageInput" name="message" placeholder="Your Message" rows="4" required></textarea>
+
+                <div id="formMessage" role="status" aria-live="polite" class="form-message" aria-atomic="true"></div>
+
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </section>
@@ -79,7 +89,7 @@
         <footer class="footer">
             <p>&copy; 2024 Phone Website. All rights reserved.</p>
         </footer>
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
